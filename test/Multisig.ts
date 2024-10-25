@@ -17,7 +17,7 @@ describe("MultiSig Contract Tests", function () {
 
     describe("MultiSig Contract Tests", function () {
         describe("Deployment", () => {
-            it("Should check if the contract deployed and owner is set", async function () {
+            it("Should check if the contract is  deployed and owner is set", async function () {
                 const { multiSig, owner } = await loadFixture(multiSigFixtureDeploy);
 
                 expect(await multiSig);
@@ -92,6 +92,14 @@ describe("MultiSig Contract Tests", function () {
 
 
 
+            it("should revert if operation is invalid", async function () {
+                const { multiSig, owner, nonSigner, signer3, receiver } = await loadFixture(multiSigFixtureDeploy);
+              
+                await multiSig.connect(signer3).initiateTransaction(
+                    hre.ethers.parseEther("0.1"),
+                    receiver.address
+                );
+            });
 
 
 
