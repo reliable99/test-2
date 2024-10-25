@@ -2,7 +2,6 @@ import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import hre from "hardhat";
 const { ethers } = require("hardhat");
-
 describe("MultiSig Contract Tests", function () {
 
     async function multiSigFixtureDeploy() {
@@ -73,7 +72,7 @@ describe("MultiSig Contract Tests", function () {
             it("Should add a valid signer successfully", async function () {
                 const { multiSig, owner, signer4 } = await loadFixture(multiSigFixtureDeploy);
 
-                const newSigner = { "address": "0x71bE63f3384f5fb98995898A86B02Fb2426c5788" }
+                const newSigner = { "address": "0xcd3B766CCDd6AE721141F452C550Ca635964ce71" }
                 await multiSig.connect(owner).addValidSigner(newSigner.address);
             });
 
